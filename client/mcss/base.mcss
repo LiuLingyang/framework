@@ -1,0 +1,87 @@
+@abstract '_config.mcss';
+/* reset */
+
+*{
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+
+}
+html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,table,caption,th,td,form,fieldset,legend,input,button,select,textarea,menu{margin:0;padding:0;}
+header,footer,section,article,aside,nav,hgroup,address,figure,figcaption,menu,details{display:block;}
+table{border-collapse:collapse;border-spacing:0;}
+caption,th{text-align:left;font-weight:normal;}
+html,body,fieldset,img,iframe,abbr{border:0;}
+i,cite,em,var,address,dfn{font-style:normal;}
+[hidefocus],summary{outline:0;}
+ol,ul{list-style:none;}
+h1,h2,h3,h4,h5,h6,small{font-size:100%;}
+sup,sub{font-size:83%;}
+pre,code,kbd,samp{font-family:inherit;}
+q:before,q:after{content:none;}
+textarea{overflow:auto;resize:none;}
+label,summary{cursor:default;}
+a,button{cursor:pointer;}
+h1,h2,h3,h4,h5,h6,em,strong,b{font-weight:normal;}
+del,ins,u,s,a,a:hover{text-decoration:none;}
+html{-webkit-tap-highlight-color:rgba(0,0,0,0);}
+button,input[type="button"],input[type="submit"],input[type="reset"]{-webkit-appearance:none;}
+input::-ms-clear,input::-ms-reveal{display:none;}
+input[type=checkbox],input[type=radio]{$size(16px);}
+input[disabled]{background-color: #f3f3f3; cursor: not-allowed; border: 1px solid #efefef;}
+:-moz-placeholder{color:$base-placeholder !important;font-weight:normal !important;}
+::-moz-placeholder{color:$base-placeholder !important;font-weight:normal !important;}
+:-ms-input-placeholder{color:$base-placeholder !important;font-weight:normal !important;}
+::-webkit-input-placeholder{color:$base-placeholder !important;font-weight:normal !important;}
+::-webkit-scrollbar {width:8px;height:8px;
+  div&,ul&{width:8px;height:8px;}
+  .m-report&{width: 7px; height: 7px;}
+  .g-report&{width: 5px }
+}
+::-webkit-scrollbar-button{display:none;}
+::-webkit-scrollbar-track{background:rgba(0,0,0,0.1);}
+::-webkit-scrollbar-thumb{border-radius:5px;background:rgba(0,0,0,0.2);}
+body,textarea,input,button,select,keygen,legend{font: 14px/1.14 $font-base1;color:#333;outline:0;}
+a,a:hover{color:#333;}
+/* function */
+.f-cb:after{display:block;clear:both;visibility:hidden;height:0;overflow:hidden;content:".";}
+.f-fl{float:left;}
+.f-fr{float:right;}
+.f-tal{text-align:left;}
+.f-tar{text-align:right;}
+.f-tac{text-align:center;}
+.f-taj{$justify();}
+.f-nowrap{$nowrap();}
+.f-wrap{$wrap();}
+.f-pre{$pre();}
+.f-ellipsis{$ellipsis();}
+.f-noselect{$user-select:none;}
+.f-notext{$hideText();}
+.f-dn{display:none;}
+.f-ib{display:inline-block;*display:inline;*zoom:1;}
+.f-fwb{font-weigth:bold;}
+.f-move{cursor:move;}
+/* skin */
+.s-fc1{color:#333;}
+.s-fc2{color:#999;}
+@font-face {
+  font-family: "bigviz";
+  src: url("../../index/res/font/bigviz.eot");
+  src: url("../../index/res/font/bigviz.eot?#iefix") format("embedded-opentype"),
+       url("../../index/res/font/bigviz.woff") format("woff"),
+       url("../../index/res/font/bigviz.ttf") format("truetype"),
+       url("../../index/res/font/bigviz.svg#bigviz") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+$keyframes(fadeup,($pre){
+	0%{#{$pre}transform:translateY(20%);opacity:0;}
+	100%{#{$pre}transform:translateY(0%);opacity:1;}
+});
+$keyframes(fadein,($pre){
+  0%{opacity:0;}
+  100%{opacity:1;}
+});
+
+.noselect {
+    $user-select: none;
+}

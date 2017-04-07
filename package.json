@@ -1,0 +1,23 @@
+{
+  "name": "framework",
+  "version": "1.0.0",
+  "description": "a simple framework",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lanberts/framework.git"
+  },
+  "author": "liulingyang",
+  "dependencies": {
+    "koa": "^1.2.5",
+    "koa-ejs": "^3.0.0",
+    "koa-router": "^5.4.0",
+    "koa-static": "^2.1.0",
+    "isomorphic-fetch": "^2.2.1",
+    "babel-core": "^6.21.0",
+    "babel-loader": "^6.2.10",
+    "babel-preset-es2015": "^6.18.0",
+    "webpack": "^2.2.0",
+    "webpack-stream": "^3.2.0"
+  }
+}
