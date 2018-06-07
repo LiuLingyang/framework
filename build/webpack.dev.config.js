@@ -15,6 +15,12 @@ Object.keys(baseWebpackConfig.entry).forEach(function (name) {
 
 module.exports = merge(baseWebpackConfig, {
     mode: 'development',
+    output: {
+        path: config.dev.assetsRoot,
+        publicPath: config.dev.assetsPublicPath,
+        filename: utils.assetsPath('js/[name].js'),
+        chunkFilename: utils.assetsPath('js/[id].js')
+    },
     module: {
         rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap })
     },

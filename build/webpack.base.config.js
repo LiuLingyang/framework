@@ -10,16 +10,6 @@ module.exports = {
     entry: {
         index: './client/entry/index.js'
     },
-    output: {
-        path: process.env.NODE_ENV === 'production'
-            ? config.build.assetsRoot
-            : config.dev.assetsRoot,
-        publicPath: process.env.NODE_ENV === 'production'
-            ? config.build.assetsPublicPath
-            : config.dev.assetsPublicPath,
-        filename: utils.assetsPath('js/[name].js'),
-        chunkFilename: utils.assetsPath('js/[id].js')
-    },
     resolve: {
         extensions: ['.js', '.jsx', '.json'],
         modules: [

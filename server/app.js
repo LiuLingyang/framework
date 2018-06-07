@@ -19,8 +19,7 @@ render(app, {
 
 router.get('/', function*() {
   yield this.render('index', {
-    NODE_ENV: process.env.NODE_ENV || 'development',
-    publicPath: process.env.NODE_ENV === 'production' ? 'public/static/' : 'static/',
+    NODE_ENV: process.env.NODE_ENV || 'development'
   });
 });
 

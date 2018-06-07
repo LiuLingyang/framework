@@ -4,11 +4,17 @@ const webpack = require('webpack');
 const config = require('../config');
 const merge = require('webpack-merge');
 const baseWebpackConfig = require('./webpack.base.config');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 let webpackConfig = merge(baseWebpackConfig, {
     mode: 'production',
+    output: {
+        path: config.build.assetsRoot,
+        publicPath: config.build.assetsPublicPath,
+        filename: utils.assetsPath('js/[name].[chunkhash].js'),
+        chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
+    },
     module: {
         rules: utils.styleLoaders({
             sourceMap: config.build.cssSourceMap,
@@ -16,29 +22,43 @@ let webpackConfig = merge(baseWebpackConfig, {
         })
     },
     devtool: false,
+    optimization: {
+        splitChunks: {
+            chunks: 'initial',
+            cacheGroups: {
+                vendor: {
+                    test: /node_modules\//,
+                    name: 'vendor',
+                    chunks: 'all',
+                    priority: 10,
+                    enforce: true
+                },
+                commons: {
+                    test: /common\/|components\//,
+                    name: 'commons',
+                    priority: 10,
+                    enforce: true
+                }
+            }
+        },
+        runtimeChunk: {
+            name: 'manifest'
+        }
+    },
     plugins: [
         new webpack.DefinePlugin({
             'process.env': config.build.env
         }),
         new MiniCssExtractPlugin({
-            filename: utils.assetsPath('css/[name].css'),
+            filename: utils.assetsPath('css/[name].[contenthash].css'),
             allChunks: true
         }),
-        new webpack.optimize.SplitChunksPlugin({
-            cacheGroups: {
-                vendor: {
-                    name: 'vendor',
-                    test: path.join(__dirname, '../node_modules'),
-                    chunks: 'all'
-                }
-            }
-        }),
-        new CopyWebpackPlugin([
-            {
-                from: 'client/views',
-                to: 'views'
-            }
-        ])
+        new HtmlWebpackPlugin({
+            filename: 'views/index.ejs',
+            template: '!!raw-loader!client/views/index.ejs',
+            inject: true,
+            chunksSortMode: 'dependency'
+        })
     ]
 });
 
