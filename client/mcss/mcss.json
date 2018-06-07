@@ -1,7 +1,0 @@
-{
-	"input": "./",
-	"outport": "../assets/css",
-	"format": 1,
-	"watch": 2,
-	"exclude": "(\/|\\\\)_|^_|include|mass"
-}

@@ -1,25 +1,27 @@
-var koa = require('koa');
-var static = require('koa-static');
-var render = require('koa-ejs');
-var router = require('koa-router')({
-    prefix: '/'
+const koa = require('koa');
+const static = require('koa-static');
+const render = require('koa-ejs');
+const router = require('koa-router')({
+  prefix: '/'
 });
+const config = require('../config');
 
-var app = koa();
-
+const app = koa();
 app.use(router.routes());
 app.use(static(__dirname + '/..'));
 
 render(app, {
-    root: __dirname + '/../client/views',
-    viewExt: 'ejs',
-    layout: false,
-    cache: false
+  root: process.env.NODE_ENV === 'production' ? config.build.viewpath : config.dev.viewpath,
+  viewExt: 'ejs',
+  layout: false,
+  cache: false
 });
 
 router.get('/', function*() {
-    yield this.render('index');
+  yield this.render('index', {
+    NODE_ENV: process.env.NODE_ENV || 'development',
+    publicPath: process.env.NODE_ENV === 'production' ? 'public/static/' : 'static/',
+  });
 });
-
 
 app.listen(3000);
