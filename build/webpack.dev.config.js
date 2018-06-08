@@ -6,10 +6,11 @@ const merge = require('webpack-merge');
 const baseWebpackConfig = require('./webpack.base.config');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 
-// add hot-reload related code to entry chunks
 Object.keys(baseWebpackConfig.entry).forEach(function (name) {
     baseWebpackConfig.entry[name] = [
-        'react-hot-loader/patch'
+        'react-hot-loader/patch',
+        'webpack-dev-server/client?http://localhost:3001/',
+        'webpack/hot/dev-server'
     ].concat(baseWebpackConfig.entry[name]);
 });
 
@@ -41,6 +42,7 @@ module.exports = merge(baseWebpackConfig, {
             'process.env': config.dev.env
         }),
         new webpack.HotModuleReplacementPlugin(),
+        new webpack.NamedModulesPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
         new FriendlyErrorsPlugin()
     ]

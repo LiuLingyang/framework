@@ -5,7 +5,7 @@ module.exports = {
         env: require('./dev.env'),
         assetsRoot: path.resolve(__dirname, '../public'),
         assetsSubDirectory: 'static',
-        assetsPublicPath: '/public',
+        assetsPublicPath: 'http://localhost:3001/',
         viewpath: path.resolve(__dirname, '../client/views'),
         cssSourceMap: true
     },

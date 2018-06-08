@@ -8,7 +8,7 @@ const config = require('../config');
 
 const app = koa();
 app.use(router.routes());
-app.use(static(__dirname + '/..'));
+app.use(static(__dirname + '../'));
 
 render(app, {
   root: process.env.NODE_ENV === 'production' ? config.build.viewpath : config.dev.viewpath,

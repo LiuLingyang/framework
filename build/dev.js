@@ -1,6 +1,5 @@
 
 const path = require('path');
-const opn = require('opn');
 const chalk = require('chalk');
 const webpack = require('webpack');
 const config = require('../config');
@@ -12,10 +11,4 @@ process.env.NODE_ENV = 'development';
 let compiler = webpack(webpackConfig);
 let server = new devServer(compiler, webpackConfig.devServer);
 console.log(chalk.cyan('dev server started at ' + webpackConfig.devServer.port));
-server.listen(webpackConfig.devServer.port, "localhost", function (err) {
-  if (err) {
-      console.log(err);
-      return;
-  }
-  opn('http://localhost:' + webpackConfig.devServer.port);
-});
+server.listen(webpackConfig.devServer.port);
