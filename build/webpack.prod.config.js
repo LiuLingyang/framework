@@ -7,7 +7,7 @@ const baseWebpackConfig = require('./webpack.base.config');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-let webpackConfig = merge(baseWebpackConfig, {
+module.exports = merge(baseWebpackConfig, {
     mode: 'production',
     output: {
         path: config.build.assetsRoot,
@@ -63,9 +63,16 @@ let webpackConfig = merge(baseWebpackConfig, {
             filename: 'views/index.ejs',
             template: '!!raw-loader!client/views/index.ejs',
             inject: true,
-            chunksSortMode: 'dependency'
+            chunksSortMode: 'dependency',
+            chunks:['manifest','index']
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'views/test.ejs',
+            template: '!!raw-loader!client/views/test.ejs',
+            inject: true,
+            chunksSortMode: 'dependency',
+            chunks:['manifest','test']
         })
     ]
 });
 
-module.exports = webpackConfig;

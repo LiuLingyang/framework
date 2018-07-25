@@ -8,7 +8,8 @@ function resolve (dir) {
 
 module.exports = {
     entry: {
-        index: './client/entry/index.js'
+        index: './client/entry/index.js',
+        test: './client/entry/test.js',
     },
     resolve: {
         extensions: ['.js', '.jsx', '.json'],
@@ -29,15 +30,6 @@ module.exports = {
     },
     module: {
         rules: [
-            {
-                test: /\.jsx?$/,
-                loader: 'eslint-loader',
-                enforce: 'pre',
-                include: [resolve('client'), resolve('test')],
-                options: {
-                    formatter: require('eslint-friendly-formatter')
-                }
-            },
             {
                 test: /\.jsx?$/,
                 loader: 'babel-loader',
